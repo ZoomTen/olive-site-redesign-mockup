@@ -1,0 +1,160 @@
+!!!
+%html(lang="en")
+  %head
+    %title Olive Video Editor
+    %meta(charset="utf-8")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %meta(name="theme-color" content="#1B300C")
+    %link(rel="stylesheet" href="style.css")
+  %body
+    %section#intro
+      .content
+        .logo
+        %h1
+          Olive Video Editor
+          %span.versionnumber 0.2.0-prealpha
+        %p
+          Olive welcomes you to the
+          future of video editing.
+        %p
+          What are you waiting for?
+        #mainbuttons
+          %a.button.cta(href="download.html" role="button")
+            Get it now
+          %a.button(href="https://github.com/olive-editor/olive" role="button")
+            Source code
+        .skiparrow(aria-hidden="true")
+          %a(href="javascript:void(0)" onclick="document.querySelector('#what').scrollIntoView({ behavior: 'smooth', block: 'end'});") ▼
+
+    %section#what
+      .content
+        %h1
+          What is Olive?
+        %p
+          Olive is a
+          video editor that aims to provide a fully-featured alternative
+          to high-end, "professional" video editing software. It is a
+          fast, modern,
+          non-linear editing software that can be used for anything from
+          cat videos to the big screen.
+        %p
+          It is cross-platform, running on Windows, macOS and Linux, among
+          other systems. It's free, libre and open-source, licensed under GPLv3.
+          That means you're free to look at Olive's source code and
+          improve it as you see fit.
+        %p
+          Although it is both free as in freedom as well as free as in beer,
+          you can help its development by becoming our <a href="#">Patron</a>.
+        %img.screenshot(src="assets/olive-apr-19.JPG" alt="Olive Video Editor screenshot")
+
+    %section#features.featured
+      .content
+        %h1
+          What can it do (so far)?
+        %input#carousel-1(checked="checked" name="carousel" type="radio" hidden)
+        %input#carousel-2(name="carousel" type="radio" hidden)
+        %input#carousel-3(name="carousel" type="radio" hidden)
+        %input#carousel-4(name="carousel" type="radio" hidden)
+        %input#carousel-5(name="carousel" type="radio" hidden)
+        %input#carousel-6(name="carousel" type="radio" hidden)
+        %input#carousel-7(name="carousel" type="radio" hidden)
+        .carousel-nav
+          %label(for="carousel-1" aria-hidden="true")
+          %label(for="carousel-2" aria-hidden="true")
+          %label(for="carousel-3" aria-hidden="true")
+          %label(for="carousel-4" aria-hidden="true")
+          %label(for="carousel-5" aria-hidden="true")
+          %label(for="carousel-6" aria-hidden="true")
+          %label(for="carousel-7" aria-hidden="true")
+        .carousel-slides
+          .inner
+            .item
+              .text-column
+                %h2 OCIO support
+                %p
+                  %abbr(title="OpenColorIO") OCIO
+                  is a technology
+                  that allows you to work in a consistent,
+                  color-managed workflow, ensuring that what you do looks
+                  right anywhere.
+              .image-column
+                %img(src="assets/Ocio_old_management.png" height=300 alt="Color Management in Olive")
+            .item
+              .text-column
+                %h2 Realtime, GPU-accelerated previewing
+                %p
+                  Olive is OpenGL-powered, which can use your GPU to
+                  accelerate rendering by a TON! You don't need to see
+                  individual pixels or render at half-resolution anymore!
+                %p
+                  You can still make proxy clips if you need to, though!
+                  Just in case.
+              .image-column
+                %img(src="https://futurefive.co.nz/uploads/story/2018/11/12/Nvidia_RTX_00.jpg" height=300 alt="GPU Support")
+            .item
+              .text-column
+                %h2 4K+
+                %p
+                  Because of the sheer speed of Olive's previewer, that
+                  means you can edit 4K and even 8K videos as fast as
+                  you can view them. Stack them, cut them, go crazy with
+                  them.
+              .image-column
+                %img(src="assets/ohwow4k.png" height=300 alt="4K Editing")
+            .item
+              .text-column
+                %h2 Wide array of effects
+                %p
+                  Olive's effects are written in the OpenGL Shading Language,
+                  which are already used in the web to create stunning effects.
+                  Now you can bring the magic to your videos as well.
+                %p
+                  The community has made a large number of effects that adds
+                  functionality to Olive, including, among other things,
+                  the ability to edit 360° video.
+              .image-column
+                %img(src="https://i.ytimg.com/vi/QcuBX0pNLKY/maxresdefault.jpg" height=300 alt="GLSL Sample")
+            .item
+              .text-column
+                %h2 Imports everything
+                %p
+                  No more fussing with codecs! Olive will take care of
+                  your old videos through the versatile, built-in FFMPEG tools.
+                  Videos, pictures, image sequences... Anything.
+              .image-column
+                %img(src="https://i.imgur.com/8pSVa92.png" height=300 alt="Importing")
+            .item
+              .text-column
+                %h2 Node-based
+                %p
+                  If Olive's effects are toy blocks, then node graphs
+                  are the impressive structures you make from it.
+                %p
+                  With the Node Editor, you can create a more dynamic
+                  range of effects for your productions.
+              .image-column
+                %img(src="assets/nodeedit.png" height=300 alt="Node Graph")
+            .item
+              .single-column
+                %h2 More to come...
+                %p
+                  More new and exciting features will come to Olive. Stay tuned!
+                %p
+                  Even if Olive is missing something you need, come back in a
+                  while and it's possible it will have been implemented.
+
+    %section#alpha
+      .content
+        %h1 How is it?
+        %p
+          Olive is making rapid progress and users are already producing
+          videos with it, but it's still currently in <strong>alpha</strong> meaning it is
+          incomplete and not fully stable.
+        %p
+          Regardless, we invite you to <a href="download.html">download the latest build</a>
+          and try it out for yourself!
+        %p
+          Have fun, and enjoy experimenting in Olive!
+
+    = Haml::Engine.new(File.read("src/#includes/header.haml")).render
+    = Haml::Engine.new(File.read("src/#includes/footer.haml")).render

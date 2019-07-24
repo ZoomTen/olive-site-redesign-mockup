@@ -1,0 +1,569 @@
+/* Sorry for the webfont, I'm rushing here*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap');
+
+/* make design a bit easier */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/* treat html5 elements as divs */
+nav, section, footer {
+  display: block;
+}
+
+dfn {
+  display: inline-block;
+}
+
+/* begin main styling */
+$menu-bg: #1B300C;
+$menu-col: #fff;
+
+$small-phone-size: 692px;
+$phone-size: 800px;
+$notebook-size: 1200px;
+
+$max-small-height: 500px;
+
+$theme-color: #497318;
+$theme-color-accent: #fff;
+$dark-text-color:#131;
+
+$main-logo-size: 8em;
+$nav-logo-size: 50px;
+$logo-image-url: "assets/olive-logo-joined-white.svg";
+
+$dl-logo-size: 5em;
+$dl-logos:(
+  "windows": "assets/windows-logo-white.svg",
+  "mac": "assets/apple-inc-white.svg",
+  "linux": "assets/tux-white.svg",
+  "other": "assets/triple-dot-horizontal.svg",
+);
+
+body{
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  font-size: 1em;
+  line-height: 1.7;
+  color: $dark-text-color;
+  font-weight: 500;
+}
+
+.hidden{
+  position:absolute;
+  left:-9999em;
+  height:0;
+}
+
+a{
+  color:$theme-color;
+}
+
+a.button{
+  text-decoration: none;
+  padding:8px 16px;
+  margin:8px;
+  border-radius: 10px;
+}
+
+nav#menu-holder{
+  z-index: 2;
+  background-color: rgba($menu-bg, 0);
+  height: 60px;
+  padding: 0 5%;
+  color: $menu-col;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  transition: all .5s;
+
+  &.solid{
+    background-color: $menu-bg;
+    height: 70px;
+    box-shadow: 0 0 16px rgba(0,0,0,.4);
+  }
+
+  .logo{
+    width: $nav-logo-size;
+    height: $nav-logo-size;
+    background-size: $nav-logo-size $nav-logo-size;
+    background-image: url($logo-image-url);
+    vertical-align: middle;
+    font-size:0;
+  }
+}
+
+ul#mainmenu{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content:space-around;
+  font-weight: 400;
+
+  li{
+    display: inline-flex;
+    padding:0 10px;
+
+    a{
+      color: $menu-col;
+      text-decoration: none;
+      border-bottom: 2px inset rgba($menu-col, .2);
+      transition: border-color .5s;
+
+      &:hover{
+        border-bottom: 2px inset $menu-col;
+      }
+    }
+  }
+
+  @media screen and (max-width: $small-phone-size - 1px){
+    display: none;
+  }
+}
+
+section{
+  padding-bottom:5em;
+  border-top: 8px solid rgba($theme-color, .3);
+
+  h1,h2,h3,h4,h5,h6{
+    text-align: center;
+  }
+
+  &:first-of-type{
+    padding-top:60px;
+  }
+
+  .content{
+      margin-left: 5%;
+      margin-right: 5%;
+
+      @media screen and (min-width: $phone-size){
+        margin: auto;
+        max-width: 80%;
+      }
+
+      @media screen and (min-width: $notebook-size){
+        margin: auto;
+        max-width: 60%;
+      }
+  }
+}
+
+section#what{
+  .content{
+    display: flex;
+    flex-direction: column;
+    .screenshot{
+      border-radius: 4px;
+      box-shadow: 0 2px 11px rgba(0,0,0,.6);
+      width:100%;
+      max-width:700px;
+      align-self: center;
+    }
+  }
+}
+
+section.featured{
+  background-color: $theme-color;
+  background-image: linear-gradient(48deg,
+                                    adjust-color($theme-color,
+                                                 $lightness: 20%,
+                                                 $hue: 60deg,
+                                                 $saturation: -30%) 0%,
+                                    adjust-color($theme-color,
+                                                 $lightness: -10%,
+                                                 $hue: 0deg,
+                                                 $saturation: -20%) 100%
+                                    );
+  color: $theme-color-accent;
+  h1{
+    color: lighten($theme-color, 30%);
+    padding:10px 0;
+  }
+  a{
+    color: lighten($theme-color,80%)
+  }
+}
+
+@keyframes wibble{
+  from{
+    top:0;
+  }
+  to{
+    top:.2em;
+  }
+}
+
+section#intro{
+  h1,h2,h3,h4,h5,h6{
+    text-align: inherit;
+  }
+  font-weight: 400;
+
+  .versionnumber{
+    display:block;
+    font-size: .9em;
+    line-height: 1.75;
+    color:lighten($theme-color, 30%);
+  }
+
+  .skiparrow{
+    padding-top: 2em;
+    font-size: 1.5em;
+    text-align: center;
+    animation: wibble .7s infinite alternate;
+    position: relative;
+    a{
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  border-top: none;
+  text-align: left;
+  font-size: 1.2em;
+  background-image: linear-gradient(132deg,
+                                    adjust-color($theme-color,
+                                                 $lightness: -10%,
+                                                 $hue: 60deg,
+                                                 $saturation: -30%) 0%,
+                                    adjust-color($theme-color,
+                                                 $lightness: -0%,
+                                                 $hue: 0deg,
+                                                 $saturation: -30%) 100%
+                  ),
+                  url('assets/IMG_7369.JPG');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-blend-mode: screen;
+  /*background-color: $theme-color;*/
+  color:white;
+  line-height: .8;
+  height: 105vh;
+  padding:5em 2em;
+  display:flex;
+
+  @media screen and (max-width: $phone-size - 1px){
+    font-size: 1em;
+    line-height: 1;
+  }
+  @media screen and (max-height: $max-small-height - 1px){
+    font-size: .8em;
+    line-height: 1;
+
+  }
+
+  .content{
+    margin: auto;
+    width: 28em;
+  }
+
+  .logo{
+    width:$main-logo-size;
+    height:$main-logo-size;
+    background-size: $main-logo-size $main-logo-size;
+    background-image: url($logo-image-url);
+  }
+
+  #mainbuttons{
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+  }
+
+  a.button{
+    color:$theme-color-accent;
+    border:2px solid $theme-color-accent;
+    transition: box-shadow .2s,
+                color .2s,
+                background-color .2s;
+    &:hover{
+      background-color: rgba($theme-color-accent,.2);
+      box-shadow: 0 5px 24px rgba(0,0,0,.7);
+    }
+    &.cta{
+      background-color: $theme-color-accent;
+      color:$theme-color;
+      font-weight: bold;
+      border:2px solid $theme-color-accent;
+        &:hover{
+          background-color:$theme-color;
+          color:$theme-color-accent;
+          border:2px solid $theme-color;
+        }
+      }
+    box-shadow: 0 3px 14px rgba(0,0,0,.4);
+  }
+}
+
+%download-listing-span{
+  display: block;
+}
+
+ul#download-listing{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  > li{
+    display: block;
+    flex-basis: 0;
+    flex: 1 1 0;
+    margin: 5px;
+  }
+
+  input#windows-builds,
+  input#mac-builds,
+  input#linux-builds,
+  input#other-builds{
+    display: none;
+
+    & + label{
+      .field-box{
+        background-position: center 3em;
+        background-size:$dl-logo-size $dl-logo-size;
+        background-repeat: no-repeat;
+        padding:32px;
+        padding-top: 150px;
+        font-weight: bold;
+        border-radius: 3px;
+        text-align: center;
+        transition: background-color .3s;
+        cursor: pointer;
+      }
+
+      span{
+        &.title{
+          @extend %download-listing-span;
+          font-size: 1.25em;
+        }
+        &.subtitle{
+          @extend %download-listing-span;
+          font-weight: 400;
+        }
+      }
+
+      & + ul.links-list{
+        margin-top:.8em;
+        padding-left: 0;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+        display: block;
+        transition: opacity .5s;
+
+        li{
+          a{ text-decoration: none;}
+          border: 2px solid rgba(255,255,255,.3);
+          margin-bottom: 2px;
+          text-align: center;
+          list-style: none;
+
+          &:hover{
+            background-color:  rgba(255,255,255,.2);
+          }
+        }
+      }
+    }
+
+    &:checked + label{
+      .field-box{
+        background-color: rgba(lighten($theme-color, 30%), .3);
+      }
+
+      & + ul.links-list{
+        height: auto;
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  input#windows-builds + label .field-box{
+    background-image: url( map_get($dl-logos, "windows") );
+  }
+  input#mac-builds + label .field-box{
+    background-image: url( map_get($dl-logos, "mac") );
+  }
+  input#linux-builds + label .field-box{
+    background-image: url( map_get($dl-logos, "linux") );
+  }
+  input#other-builds + label .field-box{
+    background-image: url( map_get($dl-logos, "other") );
+  }
+}
+
+footer{
+  background-color: $menu-bg;
+  color:$menu-col;
+  text-align: center;
+  font-size: .875em;
+  padding:1em 0;
+}
+
+/* https://cutcodedown.com/tutorial/mobileMenu */
+#mobilemenu{
+  display:none;
+
+  & + label{
+    position:relative;
+    float:right;
+    padding:0.5em 1em;
+    color:#FFF;
+    border-radius:0.25em;
+
+    &:before{
+      content: '⋮';
+      display:block;
+      font-size:2em;
+    }
+
+    &:before{
+      border-bottom: 0;
+    }
+
+    @media screen and (min-width:$small-phone-size){
+      display:none;
+    }
+  }
+
+  &:checked {
+    & + label{
+      background:$theme-color;
+    }
+    @media screen and (max-width: $small-phone-size - 1px){
+      ~ #mainmenu{
+        display: block;
+        position: fixed;
+        top:3em;
+        right:0;
+        text-align: left;
+        padding:10px 10px;
+        background-color: $theme-color;
+        border-radius:0.25em;
+        box-shadow: 0 2px 6px rgba(0,0,0,.5);
+        li{
+          display: block;
+          margin:.9em 0;
+
+        }
+      }
+    }
+  }
+}
+
+/* https://computerrock.com/blog/how-to-create-css-carousel-slider/ */
+input[name="carousel"] {
+    display: none;
+}
+
+$css-carousel: (
+    slides: 7,
+    transition-speed: .5s
+);
+
+.carousel-nav {
+    float: right;
+    label {
+        display: block;
+        border: 2px solid $theme-color-accent;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.25s;
+        margin: 16px 0;
+        width: 16px;
+        height: 16px;
+
+        @media screen and (max-width: $phone-size - 1px){
+          margin: 20px 0;
+          width: 20px;
+          height: 20px;
+        }
+    }
+}
+
+.carousel-slides {
+    width: calc(100% - 40px);
+    overflow: hidden;
+
+    %column-common{
+      float:left;
+      display:inline-block;
+      padding:10px;
+      overflow: hidden;
+      h1,h2{
+      text-align: left;}
+    }
+
+    div.image-column{
+      @extend %column-common;
+      width:40%;
+      @media screen and (max-width: $phone-size - 1px){
+        float: left;
+        width: 100%;
+      }
+    }
+
+    div.text-column{
+      @extend %column-common;
+      width:60%;
+      @media screen and (max-width: $phone-size - 1px){
+        float: left;
+        width: 100%;
+      }
+    }
+
+    div.single-column{
+      @extend %column-common;
+      width:100%;
+    }
+
+    .inner {
+        width: (100% * map_get($css-carousel, slides));
+        transition: margin map_get($css-carousel, transition-speed);
+    }
+
+    .item {
+        float: left;
+        width: (100% / map_get($css-carousel, slides));
+    }
+}
+// active carousel navigation
+@for $i from 1 through map_get($css-carousel, slides) {
+    #carousel-#{$i}:checked ~ .carousel-nav label[for="carousel-#{$i}"] {
+        background-color: $theme-color-accent;
+    }
+}
+
+// active carousel slides
+@for $i from 1 through map_get($css-carousel, slides) {
+    #carousel-#{$i}:checked ~
+    .carousel-slides .inner {
+        margin-left: (-100% * ($i - 1));
+    }
+}
+
+/* custom scrollbar for chrome */
+::-webkit-scrollbar{
+  width: 16px;
+  &-thumb{
+    background: lighten($theme-color, 10%);
+    border-radius: 20px;
+  }
+  &-track{
+    background: darken($theme-color, 10%);
+  }
+
+}

@@ -1,0 +1,17 @@
+%footer
+  &copy; 2018, 2019 Olive Team.
+:javascript
+  (function (window, document) {
+    navbar_target = document.getElementById("menu-holder")
+    navbar_target.classList.remove('solid');
+    window.addEventListener("scroll",
+      function(){
+        winscroll = document.documentElement.scrollTop;
+        if (winscroll < 50){
+          navbar_target.classList.remove('solid');
+        } else {
+          navbar_target.classList.add('solid');
+        }
+      }
+    );
+  })(this, this.document);
