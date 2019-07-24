@@ -227,6 +227,10 @@ section#intro{
     a{
       color: #fff;
       text-decoration: none;
+
+      &:before{
+        content:'▼';
+      }
     }
   }
 
@@ -284,6 +288,7 @@ section#intro{
   }
 
   a.button{
+    display:inline-block;
     color:$theme-color-accent;
     border:2px solid $theme-color-accent;
     transition: box-shadow .2s,
