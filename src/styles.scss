@@ -47,6 +47,9 @@ $dl-logos:(
   "other": "assets/triple-dot-horizontal.svg",
 );
 
+$home-tri-size: 1.5em;
+$home-tri-image: "assets/Homepage_Triangle.svg";
+
 body{
   font-family: "Montserrat", sans-serif;
   margin: 0;
@@ -220,17 +223,24 @@ section#intro{
 
   .skiparrow{
     padding-top: 2em;
-    font-size: 1.5em;
     text-align: center;
     animation: wibble .7s infinite alternate;
     position: relative;
-    a{
-      color: #fff;
-      text-decoration: none;
 
+
+    a{
       &:before{
         content:'▼';
+        color: transparent;
       }
+      text-decoration: none;
+      font-size: $home-tri-size;
+      width: $home-tri-size;
+      height: $home-tri-size;
+      background-image: url( $home-tri-image );
+      background-size: $home-tri-size $home-tri-size;
+      background-repeat: no-repeat;
+
     }
   }
 
